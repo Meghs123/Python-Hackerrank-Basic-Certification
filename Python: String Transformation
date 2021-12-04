@@ -7,7 +7,6 @@ import re
 import sys
 
 
-
 #
 # Complete the 'transformSentence' function below.
 #
@@ -18,28 +17,31 @@ import sys
 def transformSentence(sentence):
     # Write your code here
     sentence.strip()
-    res=''
-    ind=0
+    res = ''
+    ind = 0
     for x in sentence:
         if(ind==0):
-            res+=x
+            res+= x
             ind+=1
-        elif(x==' '):
-            res+=x
+        elif(x == ' '):
+            res += x
             ind+=1
         else:
-            y=sentence[ind-1]
+            y = sentence[ind-1]
             if(y==' '):
-                res+=x
+                res+= x
                 ind+=1
-            elif(y.lower()<x.lower()):
-                res+=x.lower()
+            elif(y.lower() < x.lower()):
+                res += x.upper()
+                ind+=1
+            elif(y.lower()>x.lower()):
+                res += x.lower()
                 ind+=1
             else:
-                res+=x
+                res+= x
                 ind+=1
     return res
-        
+
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')
 
@@ -50,3 +52,4 @@ if __name__ == '__main__':
     fptr.write(result + '\n')
 
     fptr.close()
+
